@@ -30,8 +30,8 @@ extern "C" {
 #include "stm32f4xx_hal.h"
 
 //#define RMS
-//#define MAIN1
-#define MAIN6
+#define MAIN1
+//#define MAIN6
 
 /* Exported types ------------------------------------------------------------*/
 /* USER CODE BEGIN ET */
