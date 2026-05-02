@@ -11,16 +11,11 @@
 #include "cmsis_os.h"
 #include "queue.h"
 #include "semphr.h"
-#include "event_groups.h"
 
 #ifdef MAIN6
 
-#define LONG_BUTON_FLAG	      ( 1 << 0 )  //BIT0
-#define SHORT_BUTON_FLAG             ( 1 << 4 )  //BIT4
 
-/* Private variables ---------------------------------------------------------*/
-UART_HandleTypeDef huart1;
-UART_HandleTypeDef huart2;
+
 #define DISPLAY
 
 #ifdef DISPLAY 
@@ -39,13 +34,10 @@ QueueHandle_t       Queue1;
 void Task1(void *p);
 void Task2(void *p);
 void Task3(void *p);
-void Task4(void *p);
-EventGroupHandle_t Flag;
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
-static void MX_USART1_UART_Init(void);
-static void MX_USART2_UART_Init(void);
+
 void StartDefaultTask(void const * argument);
 
 
@@ -60,6 +52,11 @@ void StartDefaultTask(void const * argument);
   */
 int main(void)
 {
+#ifdef DEBUG
+  initialise_monitor_handles();
+  printf("LAB6------------------- \n");
+#endif
+
   /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
   HAL_Init();
   /* Configure the system clock */
@@ -76,7 +73,6 @@ int main(void)
   xTaskCreate(Task1,"Periodic"  ,128, NULL,2,&hTask1);
   xTaskCreate(Task2,"APeriodic"  ,128,NULL,3,NULL);
   xTaskCreate(Task3,"Processing" ,128,NULL,3,NULL);
-  xTaskCreate(Task4,"FlagBlock"  ,128,NULL,3,NULL);
  
 
   /* Create the thread(s) */

@@ -29,10 +29,9 @@ extern "C" {
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f4xx_hal.h"
 
-/* Private includes ----------------------------------------------------------*/
-/* USER CODE BEGIN Includes */
-
-/* USER CODE END Includes */
+//#define RMS
+//#define MAIN1
+#define MAIN6
 
 /* Exported types ------------------------------------------------------------*/
 /* USER CODE BEGIN ET */

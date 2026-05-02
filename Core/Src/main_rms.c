@@ -15,6 +15,7 @@
   *
   ******************************************************************************
   */
+
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
@@ -23,6 +24,7 @@
 #include "semphr.h"
 #include "event_groups.h"
 #include "stdio.h"
+#ifdef RMS
 
 #define DISPLAY
 extern void initialise_monitor_handles(void);
@@ -60,7 +62,6 @@ void LoadFunction(uint32_t time_ms, uint16_t io);
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-  //initialise_monitor_handles();
 
   /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
   HAL_Init();
@@ -120,7 +121,6 @@ void Task1(void *p) //P1
     LoadFunction(200,GPIO_PIN_12);
    
      vTaskDelayUntil( &xLastWakeTime, xTaskPeriod );
-     // vTaskDelay(1000);
  
   }
 }
@@ -173,7 +173,6 @@ void Task4(void *p) // P3
     
      vTaskDelayUntil( &xLastWakeTime, xTaskPeriod );
 
-    //vTaskDelay(350);
   }
   
 }
@@ -352,3 +351,4 @@ void assert_failed(uint8_t *file, uint32_t line)
   /* USER CODE END 6 */
 }
 #endif /* USE_FULL_ASSERT */
+#endif

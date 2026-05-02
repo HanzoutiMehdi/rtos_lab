@@ -15,6 +15,7 @@
   *
   ******************************************************************************
   */
+
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
@@ -23,6 +24,8 @@
 #include "semphr.h"
 #include <stdio.h>
 extern void initialise_monitor_handles(void);
+
+#ifdef MAIN1
 
 
 /* Private function prototypes -----------------------------------------------*/
@@ -293,3 +296,4 @@ void assert_failed(uint8_t *file, uint32_t line)
   /* USER CODE END 6 */
 }
 #endif /* USE_FULL_ASSERT */
+#endif
